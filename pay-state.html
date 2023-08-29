@@ -78,6 +78,9 @@
         if (userChoice === computer) {
           result = "비겼습니다! 혹시모르니 재고 다시한번 확인하세요!";
           openModal();
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
         } else if (
           (userChoice === "✌" && computer === "🖐") ||
           (userChoice === "✊" && computer === "✌") ||
@@ -86,9 +89,15 @@
           result = "이겼습니다! 결제 창으로 넘어갑니다.";
           openModal();
           showPurchaseContent();
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
         } else {
           result = "졌습니다! 혹시모르니 재고 다시한번 확인하세요!";
           openModal();
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
         }
 
         document.getElementById(
