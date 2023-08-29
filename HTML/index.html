@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>쇼핑 사이트</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>쇼핑 사이트</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="#">상품 목록</a></li>
+          <li><a href="#">장바구니</a></li>
+          <li><a href="#">마이페이지</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="product-list">
+      <div class="product">
+        <img src="product1.jpg" alt="Product 1" />
+        <h2>상품 1</h2>
+        <p>
+          상품 설명 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        <button class="buy-button" onclick="redirectToPayState()">
+          구매하기
+        </button>
+      </div>
+      <div class="product">
+        <img src="product2.jpg" alt="Product 2" />
+        <h2>상품 2</h2>
+        <p>
+          상품 설명 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        <button class="buy-button" onclick="redirectToPayState()">
+          구매하기
+        </button>
+      </div>
+      <!-- 다른 상품들도 추가 -->
+    </section>
+
+    <footer>
+      <p>&copy; 2023 쇼핑 사이트. All rights reserved.</p>
+    </footer>
+    <script>
+      function redirectToPayState() {
+        window.location.href = "pay-state.html";
+      }
+    </script>
+  </body>
+</html>
