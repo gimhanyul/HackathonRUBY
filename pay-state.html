@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>수량 부족 시 가위바위보 게임</title>
+    <style>
+      /* 스타일링은 필요한 경우 자유롭게 수정 가능합니다. */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <p>구매하시겠습니까?</p>
+    <button id="purchaseButton">yes</button>
+
+    <!-- 모달 -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div id="modalContent">
+          <h1>수량이 부족해요!</h1>
+          <p>안 내면 진다 가위바위 보!</p>
+          <button id="rock">바위</button>
+          <button id="paper">보</button>
+          <button id="scissors">가위</button>
+          <p id="result"></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const choices = ["가위", "바위", "보"];
+
+      function computerChoice() {
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        return choices[randomIndex];
+      }
+
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+
+      function showPurchaseContent() {
+        document.getElementById("modalContent").style.display = "block";
+      }
+
+      function play(userChoice) {
+        const computer = computerChoice();
+        let result = "";
+
+        if (userChoice === computer) {
+          result = "비겼습니다! 혹시모르니 재고 다시한번 확인하세요!";
+          openModal();
+        } else if (
+          (userChoice === "가위" && computer === "보") ||
+          (userChoice === "바위" && computer === "가위") ||
+          (userChoice === "보" && computer === "바위")
+        ) {
+          result = "이겼습니다! 결제 창으로 넘어갑니다.";
+          openModal();
+          showPurchaseContent();
+        } else {
+          result = "졌습니다! 혹시모르니 재고 다시한번 확인하세요!";
+          openModal();
+        }
+
+        document.getElementById(
+          "result"
+        ).innerHTML = `당신: ${userChoice}, 컴퓨터: ${computer}<br>${result}`;
+      }
+
+      document
+        .getElementById("rock")
+        .addEventListener("click", () => play("바위"));
+      document
+        .getElementById("paper")
+        .addEventListener("click", () => play("보"));
+      document
+        .getElementById("scissors")
+        .addEventListener("click", () => play("가위"));
+
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("purchaseButton")
+        .addEventListener("click", openModal);
+
+      // 모달 바깥 클릭 시 모달 닫기
+      window.onclick = function (event) {
+        const modal = document.getElementById("myModal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>
