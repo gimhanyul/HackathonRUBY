@@ -67,6 +67,7 @@
     </footer>
 
     <script>
+      let game_ing = false;
       const choices = ["✌", "✊", "🖐"];
 
       function computerChoice() {
@@ -87,37 +88,41 @@
       }
 
       function play(userChoice) {
-        const computer = computerChoice();
-        let result = "";
+        if (game_ing == false) {
+          const computer = computerChoice();
+          let result = "";
 
-        if (userChoice === computer) {
-          result = "비겼습니다! 혹시모르니 재고 다시한번 확인하세요!";
-          openModal();
-          setTimeout(function () {
-            window.location.href = "index.html";
-          }, 3000);
-        } else if (
-          (userChoice === "✌" && computer === "🖐") ||
-          (userChoice === "✊" && computer === "✌") ||
-          (userChoice === "🖐" && computer === "✊")
-        ) {
-          result = "이겼습니다! 결제 창으로 넘어갑니다.";
-          openModal();
-          showPurchaseContent();
-          setTimeout(function () {
-            window.location.href = "payment.html";
-          }, 3000);
-        } else {
-          result = "졌습니다! 혹시모르니 재고 다시한번 확인하세요!";
-          openModal();
-          setTimeout(function () {
-            window.location.href = "index.html";
-          }, 3000);
+          if (userChoice === computer) {
+            result = "비겼습니다! 혹시모르니 재고 다시한번 확인하세요!";
+            game_ing = true;
+            setTimeout(function () {
+              game_ing = false;
+              window.location.href = "index.html";
+            }, 3000);
+          } else if (
+            (userChoice === "✌" && computer === "🖐") ||
+            (userChoice === "✊" && computer === "✌") ||
+            (userChoice === "🖐" && computer === "✊")
+          ) {
+            result = "이겼습니다! 결제 창으로 넘어갑니다.";
+            game_ing = true;
+            setTimeout(function () {
+              game_ing = false;
+              window.location.href = "payment.html";
+            }, 3000);
+          } else {
+            result = "졌습니다! 혹시모르니 재고 다시한번 확인하세요!";
+            game_ing = true;
+            setTimeout(function () {
+              game_ing = false;
+              window.location.href = "index.html";
+            }, 3000);
+          }
+
+          document.getElementById(
+            "result"
+          ).innerHTML = `당신: ${userChoice}, 컴퓨터: ${computer}<br>${result}`;
         }
-
-        document.getElementById(
-          "result"
-        ).innerHTML = `당신: ${userChoice}, 컴퓨터: ${computer}<br>${result}`;
       }
 
       document
