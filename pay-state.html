@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>수량 부족 시 가위바위보 게임</title>
+    <title>수량 부족!</title>
+    <link rel="stylesheet" href="styles.css" />
     <style>
       /* 스타일링은 필요한 경우 자유롭게 수정 가능합니다. */
       .modal {
@@ -33,7 +34,18 @@
     </style>
   </head>
   <body>
-    <p>구매하시겠습니까?</p>
+    <header>
+      <h1>쇼핑 사이트</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="#">상품 목록</a></li>
+          <li><a href="#">장바구니</a></li>
+          <li><a href="#">마이페이지</a></li>
+        </ul>
+      </nav>
+    </header>
+    <p style="text-align: center">구매하시겠습니까?</p>
     <button id="purchaseButton">yes</button>
 
     <!-- 모달 -->
@@ -43,13 +55,16 @@
         <div id="modalContent">
           <h1>수량이 부족해요!</h1>
           <p>안 내면 진다 가위바위 보!</p>
-          <button id="rock">✊</button>
+          <button id="rock" style="size: 10px">✊</button>
           <button id="paper">🖐</button>
           <button id="scissors">✌</button>
           <p id="result"></p>
         </div>
       </div>
     </div>
+    <footer>
+      <p>&copy; 2023 쇼핑 사이트. All rights reserved.</p>
+    </footer>
 
     <script>
       const choices = ["✌", "✊", "🖐"];
@@ -79,7 +94,7 @@
           result = "비겼습니다! 혹시모르니 재고 다시한번 확인하세요!";
           openModal();
           setTimeout(function () {
-            location.reload();
+            window.location.href = "index.html";
           }, 3000);
         } else if (
           (userChoice === "✌" && computer === "🖐") ||
@@ -90,13 +105,13 @@
           openModal();
           showPurchaseContent();
           setTimeout(function () {
-            location.reload();
+            window.location.href = "payment.html";
           }, 3000);
         } else {
           result = "졌습니다! 혹시모르니 재고 다시한번 확인하세요!";
           openModal();
           setTimeout(function () {
-            location.reload();
+            window.location.href = "index.html";
           }, 3000);
         }
 
