@@ -56,6 +56,12 @@ nav ul li a {
   max-width: 100%;
 }
 
+#purchaseButton {
+  width:100px;
+  margin:auto;
+  display:block;
+}
+
 .buy-button {
   background-color: #f44336;
   border: none;
