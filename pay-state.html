@@ -43,16 +43,16 @@
         <div id="modalContent">
           <h1>수량이 부족해요!</h1>
           <p>안 내면 진다 가위바위 보!</p>
-          <button id="rock">바위</button>
-          <button id="paper">보</button>
-          <button id="scissors">가위</button>
+          <button id="rock">✊</button>
+          <button id="paper">🖐</button>
+          <button id="scissors">✌</button>
           <p id="result"></p>
         </div>
       </div>
     </div>
 
     <script>
-      const choices = ["가위", "바위", "보"];
+      const choices = ["✌", "✊", "🖐"];
 
       function computerChoice() {
         const randomIndex = Math.floor(Math.random() * choices.length);
@@ -79,9 +79,9 @@
           result = "비겼습니다! 혹시모르니 재고 다시한번 확인하세요!";
           openModal();
         } else if (
-          (userChoice === "가위" && computer === "보") ||
-          (userChoice === "바위" && computer === "가위") ||
-          (userChoice === "보" && computer === "바위")
+          (userChoice === "✌" && computer === "🖐") ||
+          (userChoice === "✊" && computer === "✌") ||
+          (userChoice === "🖐" && computer === "✊")
         ) {
           result = "이겼습니다! 결제 창으로 넘어갑니다.";
           openModal();
@@ -98,13 +98,13 @@
 
       document
         .getElementById("rock")
-        .addEventListener("click", () => play("바위"));
+        .addEventListener("click", () => play("✊"));
       document
         .getElementById("paper")
-        .addEventListener("click", () => play("보"));
+        .addEventListener("click", () => play("🖐"));
       document
         .getElementById("scissors")
-        .addEventListener("click", () => play("가위"));
+        .addEventListener("click", () => play("✌"));
 
       document
         .getElementById("closeModal")
